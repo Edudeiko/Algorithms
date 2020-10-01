@@ -1,24 +1,49 @@
-# TO-DO: Complete the selection_sort() function below
 def selection_sort(arr):
     # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
+    for ii in range(0, len(arr) - 1):
+        cur_index = ii
         smallest_index = cur_index
-        # TO-DO: find next smallest element
         # (hint, can do in 3 loc)
-        # Your code here
-
-
-        # TO-DO: swap
-        # Your code here
+        for i in range(ii + 1, len(arr)):
+            if arr[i] < arr[smallest_index]:
+                smallest_index = i
+        
+        (arr[ii], arr[smallest_index]) = (arr[smallest_index], arr[ii]) # swap (a,b) = (b,a)
 
     return arr
 
+# other solution
+# def selection_sort_2(arr, size)
+#     for step in range(size):
+#         min_idx = step
+        
+#     for index in range(step + 1, size):
+        
+#         if arr[index] < arr[min_idx]:
+#             min_idx = index
+            
+#     (arr[step], arr[min_idx]) = (arr[min_idx], arr[step])
 
-# TO-DO:  implement the Bubble Sort function below
+# data = [-2, 4, 0, 45, 11, -9]
+# size = len(data)
+# selection_sort_2(data, size)
+# print('Sorted Array:', data)
+
+'''
+other solutions can be found here
+https://github.com/Edudeiko/Algorithms/blob/master/cs-module-project-iterative-sorting-master/src/notebook/sorting_search.ipynb
+'''
+
 def bubble_sort(arr):
-    # Your code here
-
+    
+    for index in range(len(arr)):
+        for index_unsorted in range(0, len(arr) - index -1):
+            
+            # To sort in descending order, change > to < in this line.
+            if arr[index_unsorted] > arr[index_unsorted + 1]:
+                
+                # swap if greater is at the rear position
+                (arr[index_unsorted], arr[index_unsorted + 1]) = (arr[index_unsorted + 1], arr[index_unsorted])
 
     return arr
 
@@ -40,7 +65,30 @@ buckets.
 What is the time and space complexity of the counting sort algorithm?
 '''
 def counting_sort(arr, maximum=None):
-    # Your code here
+    
+    maximum=0
+    for index in range(len(arr)):
+        if arr[index] < 0:
+            return f'Error, negative numbers not allowed in Count Sort'
+        if arr[index] > maximum:
+            maximum = arr[index]
 
+        
+    # Count the number of times each value appears.
+    # counts[0] stores the number of 0's in the input, etc
+    counts = [0] * (maximum + 1)
+    
+    # Run through the input list
+    for index in arr:
+        counts[index] += 1
+    
+    # Overwrite counts to hold the next index an item with
+    num_items_before = 0
+    for sorted_item in range(maximum + 1):
+        for _ in range(counts[sorted_item]):
+            arr[num_items_before] = sorted_item
+            
+            # Make sure the next index with the same value goes after the one just placed
+            num_items_before += 1
 
     return arr
