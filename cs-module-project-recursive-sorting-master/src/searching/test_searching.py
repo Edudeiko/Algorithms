@@ -13,17 +13,29 @@ class RecursiveSortingTests(unittest.TestCase):
         self.assertEqual(binary_search(arr2, 0, 0, len(arr2)-1), -1)
 
     # Uncomment this test to test your agnostic binary search implementation
-    def test_agnostic_binary_search(self):
-        ascending = [2, 4, 12, 14, 17, 30, 46, 47, 51, 54, 61]
-        descending = [101, 98, 57, 49, 45, 13, -3, -17, -61]
+    # def test_agnostic_binary_search(self):
+    #     ascending = [2, 4, 12, 14, 17, 30, 46, 47, 51, 54, 61]
+    #     descending = [101, 98, 57, 49, 45, 13, -3, -17, -61]
 
-        self.assertEqual(agnostic_binary_search(ascending, 12), 2)
-        self.assertEqual(agnostic_binary_search(ascending, 54), 9)
-        self.assertEqual(agnostic_binary_search(ascending, 31), -1)
+    #     self.assertEqual(agnostic_binary_search(ascending, 12, 0, len(ascending)-1), 2)
+    #     self.assertEqual(agnostic_binary_search(ascending, 54, 0, len(ascending)-1), 9)
+    #     self.assertEqual(agnostic_binary_search(ascending, 31, 0, len(ascending)-1), -1)
 
-        self.assertEqual(agnostic_binary_search(descending, 49), 3)
-        self.assertEqual(agnostic_binary_search(descending, -17), 7)
-        self.assertEqual(agnostic_binary_search(descending, -1), -1)
+    #     self.assertEqual(agnostic_binary_search(descending, 49, 0, len(descending)-1), 3)
+    #     self.assertEqual(agnostic_binary_search(descending, -17, 0, len(descending)-1), 7)
+    #     self.assertEqual(agnostic_binary_search(descending, -1, 0, len(descending)-1), -1)
+
+    # def test_agnostic_binary_search(self):
+    #     ascending = [2, 4, 12, 14, 17, 30, 46, 47, 51, 54, 61]
+    #     descending = [101, 98, 57, 49, 45, 13, -3, -17, -61]
+
+    #     self.assertEqual(agnostic_binary_search(ascending, 12), 2)
+    #     self.assertEqual(agnostic_binary_search(ascending, 54), 9)
+    #     self.assertEqual(agnostic_binary_search(ascending, 31), -1)
+
+    #     self.assertEqual(agnostic_binary_search(descending, 49), 3)
+    #     self.assertEqual(agnostic_binary_search(descending, -17), 7)
+    #     self.assertEqual(agnostic_binary_search(descending, -1), -1)
 
 if __name__ == '__main__':
     unittest.main()

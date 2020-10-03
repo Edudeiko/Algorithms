@@ -108,18 +108,16 @@ def merge_in_place(arr, start, mid, end):
             new +=1
 
 def merge_sort_in_place(arr, l, r):
-    if (r - l) >= 1:
+    # cache = {} ?
+    if (r - l) > 1:
 
         mid = 1 + (r - l) // 2
-        l = arr[:mid]
-        r = arr[mid:]
         # sort first and second halfs
-        merge_sort_in_place(l, 0, mid)
-        merge_sort_in_place(r, 0, len(r))
+        merge_sort_in_place(arr, l, mid)
+        merge_sort_in_place(arr, mid, r)
         
         merge_in_place(arr, l, mid, r)
 
-    # return arr
 
 def printList(array):
     for ii in range(len(array)):
