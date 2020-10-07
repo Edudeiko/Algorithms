@@ -3,10 +3,18 @@ Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
 def single_number(arr):
-    # Your code here
+    list_arr = []
+    for ii in arr:
+        if ii in list_arr:
+            list_arr.remove(ii)
+        else:
+            list_arr.append(ii)
+    return list_arr.pop()
 
-    pass
-
+'''
+Another solution
+'''
+# 2 * sum(set(arr)) - sum(arr)
 
 if __name__ == '__main__':
     # Use the main function to test your implementation
