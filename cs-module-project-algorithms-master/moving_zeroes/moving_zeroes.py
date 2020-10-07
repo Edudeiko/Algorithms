@@ -3,9 +3,9 @@ Input: a List of integers
 Returns: a List of integers
 '''
 def moving_zeroes(arr):
-    # Your code here
-
-    pass
+    zeros = list(filter(lambda ii: ii == 0, arr))
+    no_zeros = list(filter(lambda ii: ii != 0, arr)) + zeros
+    return no_zeros
 
 
 if __name__ == '__main__':

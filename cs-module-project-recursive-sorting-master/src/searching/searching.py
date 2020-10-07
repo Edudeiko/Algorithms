@@ -54,6 +54,38 @@ def binary_search(arr, target, start, end):
     
 #     return agnostic_binary_search(arr, target, start, mid-1)
 
+def agnostic_binary_search_solution(arr, target):
+    # $%$Start
+    start = 0
+    end = len(arr) - 1
+    if arr[start] == arr[end]:
+        if target == arr[start]:
+            return start    
+        else:
+            return -1
+    # we'll need a boolean to keep track of whether array is
+    # ascending or descending 
+    is_ascending = arr[start] < arr[end]
+    # if the array is ascending, then perform a "normal" binary search
+    if is_ascending:
+        return binary_search(arr, target, 0, len(arr)-1)
+    # if the array is descending, then perform a "reverse" binary search 
+    else:
+        return descending_binary_search(arr, target, 0, len(arr)-1)
+
+def descending_binary_search(arr, target, start, end):
+    if start > end:
+        return -1
+    else:
+        mid = (start + end) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            return descending_binary_search(arr, target, mid + 1, end)
+        else:
+            return descending_binary_search(arr, target, start, mid - 1)
+    # $%$End
+
 
 array = [-3, 0, 4, 7, 77, 89]
 target = 4

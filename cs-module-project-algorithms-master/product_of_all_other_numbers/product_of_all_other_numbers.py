@@ -3,9 +3,27 @@ Input: a List of integers
 Returns: a List of integers
 '''
 def product_of_all_other_numbers(arr):
-    # Your code here
-
-    pass
+    # Less than two ints, no product
+    if len(arr) < 2:
+        print(f'Need at least two ints to proceed')
+        
+    sum_of_all_ints_EXCEPT_index = [None] * len(arr)
+    
+    sum_now = 1
+    
+    # For each int, find sum of all int BEFORE it, then store total for each time
+    for ii in range(len(arr)):
+        sum_of_all_ints_EXCEPT_index[ii] = sum_now
+        sum_now *= arr[ii]
+    
+    # Now find sum of integers AFTER int and store it
+    sum_now = 1
+    
+    for ii in range(len(arr) -1, -1, -1):
+        sum_of_all_ints_EXCEPT_index[ii] *= sum_now
+        sum_now *= arr[ii]
+        
+    return sum_of_all_ints_EXCEPT_index
 
 
 if __name__ == '__main__':

@@ -92,3 +92,27 @@ def counting_sort(arr, maximum=None):
             num_items_before += 1
 
     return arr
+
+
+def counting_sort_2(arr, maximum=None):
+    # $%$Start
+    if len(arr) == 0:
+        return arr
+    if maximum is None:
+        maximum = max(arr)
+    # count the number of each element in original arr
+    buckets = [0] * (maximum+1)
+    for value in arr:
+        if value < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        else:
+            buckets[value] += 1
+    # reinsert values into original array using counts
+    j = 0
+    for i in range(0, len(buckets)):
+        while buckets[i] > 0:
+            arr[j] = i
+            j += 1
+            buckets[i] -= 1
+    # $%$End
+    return arr
