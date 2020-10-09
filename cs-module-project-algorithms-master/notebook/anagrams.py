@@ -2,7 +2,7 @@ from pprint import pprint
 import time
 
 # Couple of hours to run?
-
+# O(n^2)
 '''
 words = []
 
@@ -30,7 +30,7 @@ def anagrams():
 print(anagrams())  # [listen, silent, ...]
 '''
 
-# we want nlog(n) or better
+# we want O(n log n) or better
 
 '''
 words = {}
