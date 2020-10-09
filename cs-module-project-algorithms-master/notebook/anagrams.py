@@ -1,5 +1,6 @@
 from pprint import pprint
 import time
+import collections
 
 # Couple of hours to run?
 # O(n^2)
@@ -74,41 +75,65 @@ with open("words.txt") as f:
         w = w.strip()
         words.append(w)
         
-def is_anagrams(word1, word2):
-    return sorted(word1) == sorted(word2)
+# def is_anagrams(word1, word2):
+#     return sorted(word1) == sorted(word2)
 
-def anagrams():
-    result = {}
-    results_by_len = {}
+# def anagrams():
+#     result = {}
+#     results_by_len = {}
 
-    longest_sig = None
-    longest_len = -1
+#     longest_sig = None
+#     longest_len = -1
 
-    for w in words: # O(n) over the number of words
-        signature = "".join(sorted(w))
+#     for w in words: # O(n) over the number of words
+#         signature = "".join(sorted(w))
 
-        if signature not in result:
-            result[signature] = []
+#         if signature not in result:
+#             result[signature] = []
 
-        result[signature].append(w)
+#         result[signature].append(w)
 
-        if len(result[signature]) >= longest_len:
-            longest_len = len(result[signature])
-            longest_sig = signature
-    '''
-    for sigs in result:  # O(n) over the number of sigs
-        l = len(result[sigs])
+#         if len(result[signature]) >= longest_len:
+#             longest_len = len(result[signature])
+#             longest_sig = signature
+#     '''
+#     for sigs in result:  # O(n) over the number of sigs
+#         l = len(result[sigs])
 
-        if l not in results_by_len:
-            results_by_len[l] = []
+#         if l not in results_by_len:
+#             results_by_len[l] = []
 
-        results_by_len[l].append(result[sigs])
+#         results_by_len[l].append(result[sigs])
 
-    for ii in range(3,7):
-        pprint(results_by_len[ii])
-    '''
-    return result # [longest_sig]  # result
+#     for ii in range(3,7):
+#         pprint(results_by_len[ii])
+#     '''
+#     return result # [longest_sig]  # result
 
-pprint(anagrams())
-elapsed = (time.process_time() - start)
-print(f'time to process: {elapsed:.3f}')
+# pprint(anagrams())
+# elapsed = (time.process_time() - start)
+# print(f'time to process: {elapsed:.3f}')
+
+'''
+O(n)
+'''
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        anagrams_map, result = collections.defaultdict(list), []
+        for s in strs:
+            sorted_str = ("").join(sorted(s))
+            anagrams_map[sorted_str].append(s)
+        for anagram in anagrams_map.values():
+            anagram.sort()
+            result.append(anagram)
+        return result
+
+if __name__ == "__main__":
+    result = Solution().groupAnagrams(words)
+    pprint(sorted(result, key=len, reverse=True))
+    elapsed = (time.process_time() - start)
+    print(f'time to process: {elapsed:.3f}')
