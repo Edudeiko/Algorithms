@@ -19,7 +19,8 @@ c) **O(n)** add bunnies to the Stack.
 
 **f == number of dropped + broken eggs is minimized**
 
-Binary search should work here:
+I would implement a Binary search:
+
 1 2 3 4 5 6 7 8 9
 
 ^       ^       ^
