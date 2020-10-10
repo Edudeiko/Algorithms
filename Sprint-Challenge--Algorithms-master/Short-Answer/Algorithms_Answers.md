@@ -21,7 +21,6 @@ c) **O(n)** add bunnies to the Stack.
 
 I would implement a Binary search:
 
-1 2 3 4 5 6 7 8 9
+`(1)` 2 3 4 `(5)` 6 7 8 `(9)`
 
-^       ^       ^
-First start with middle 5 if it breaks take a middle from 1 to 5, if it doesn't take a middle between 5 and 9. Continue moving until 'not breaks' floor is found. Binary search has **O(log(n))** complexity.
+First start with middle `5` if eggs break take a middle from `1` to `5`, if it doesn't break take a middle between `5` and `9`. Continue moving until 'not breaks' floor is found. Binary search has **O(log(n))** complexity.
